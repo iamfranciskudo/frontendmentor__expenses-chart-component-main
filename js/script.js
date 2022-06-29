@@ -3,7 +3,7 @@ const chart = document.querySelector('.expenses__chart');
 setChart().catch(error => console.error(error));
 
 async function setChart() {
-    const response = await fetch('../data.json');
+    const response = await fetch('data.json');
     const data = await response.json();
 
     const expensesAll = data.map(expenses => {return expenses.amount});
