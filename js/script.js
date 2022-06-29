@@ -1,8 +1,8 @@
 const chart = document.querySelector('.expenses__chart');
 
-getData().catch(error => console.error(error));
+setChart().catch(error => console.error(error));
 
-async function getData() {
+async function setChart() {
     const response = await fetch('../data.json');
     const data = await response.json();
 
@@ -10,22 +10,21 @@ async function getData() {
     const max = Math.max(...expensesAll);
 
     for (expenses of data) {
-        let barElement = document.createElement('span');
-        barElement.classList.add('chart__bar');
-
         const barHeight = expenses.amount / max * 100;
-        barElement.style.height = `${barHeight}%`;
+
+        const bar = document.createElement('span');
+        bar.classList.add('chart__bar');
+        bar.style.height = `${barHeight}%`;
 
         if (expenses.amount != max) {
-            barElement.classList.add('bg-soft-red');
+            bar.classList.add('bg-soft-red');
         } else {
-            barElement.classList.add('bg-cyan');
+            bar.classList.add('bg-cyan');
         }
 
-        let dayElement = document.createElement('span');
-        dayElement.innerHTML = expenses.day;
+        bar.setAttribute('data-day', expenses.day);
+        bar.setAttribute('data-amount', `$${expenses.amount}`);
 
-        barElement.appendChild(dayElement);
-        chart.appendChild(barElement);
+        chart.appendChild(bar);
     }
 }

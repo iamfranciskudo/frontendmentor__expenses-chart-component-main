@@ -14,9 +14,9 @@
 .attribution a { color: hsl(228, 45%, 44%); }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 :root {
@@ -35,16 +35,6 @@ body {
     background-color: var(--color-neutral-cream);
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    max-width: 25rem;
-    min-width: 15rem;
-    padding: 1rem;
-    margin: 0 auto;
-}
-
 .logo {
     height: 2rem;
     width: 3rem;
@@ -52,109 +42,140 @@ body {
     background-size: cover;
 }
 
-.card {
-    padding: 1rem;
-    border-radius: .5rem;
+.container {
+    display: grid;
+    padding: 3%;
+    grid-auto-columns: minmax(min-content, 30rem);
+    grid-template-rows: min-content;
+    place-content: center;
+    gap: 1rem;
 }
 
+.card {
+    border-radius: 10px;
+    padding: 1.5rem;
+}
 
+/* balance */
 .balance__card {
+    background-color: var(--color-primary-soft-red);
     display: flex;
     align-items: center;
-    background-color: var(--color-primary-soft-red);
     color: var(--color-neutral-very-pale-orange);
 }
 
-.balance__total h1 {
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-.balance__total > span {
-    font-weight: 700;
-    font-size: 
-}
-
+/* expenses */
 .expenses__card {
     background-color: var(--color-neutral-very-pale-orange);
-    color: var(--color-neutral-dark-brown);
     display: flex;
     flex-direction: column;
-    gap: inherit;
+    gap: 3rem;
+    color: var(--color-neutral-dark-brown);
 }
 
-.expenses__card hr {
+.expenses__chart {
+    margin-top: 1rem;
+    height: 10rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 3%;
+}
+
+.chart__bar {
+    width: 100%;
+    border-radius: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.chart__bar::before {
+    content: attr(data-amount);
+    position: absolute;
+    background-color: var(--color-neutral-dark-brown);
+    color: var(--color-neutral-very-pale-orange);
+    padding: .5rem;
+    bottom: 105%;
+    border-radius: inherit;
+    transform: scale(0);
+    z-index: 99;
+}
+
+.chart__bar::after {
+    content: attr(data-day);
+    position: absolute;
+    color: var(--color-neutral-medium-brown);
+    font-size: .9rem;
+    top: calc(100% + .5rem);
+    border-radius: inherit;
+}
+
+.chart__bar:hover::before,
+.chart__bar:active::before {
+    transform: scale(100%);
+}
+
+.chart__bar.bg-cyan:hover {
+    background-color: hsl(186, 34%, 70%);
+}
+
+.chart__bar.bg-soft-red:hover {
+    background-color:hsl(10, 79%, 70%)
+}
+
+.expenses__card > hr {
     border: 0;
     height: 1px;
     background-color: var(--color-primary-soft-red);
 }
 
-.expenses__chart {
-    height: 8rem;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    gap: .5rem;
-    margin-block: 2rem;
-}
-
-.chart__bar {
-    width: 100%;
-    border-radius: .2rem;
-    position: relative;
-}
-
-.chart__bar > span {
-    position: absolute;
-    bottom: -1.5rem;
-    font-size: .8rem;
-    color: var(--color-neutral-medium-brown);
-}
-
 .expenses__summary {
     display: flex;
-    align-items: center;
-}
-
-.expenses__summary h2 {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--color-neutral-medium-brown)
-}
-
-.expenses__summary-total > span {
-    font-size: 2rem;
-    font-weight: 700;
 }
 
 .expenses__summary-difference {
+    align-self: flex-end;
     display: flex;
     flex-direction: column;
     text-align: right;
-    align-self: flex-end;
 }
 
-.expenses__summary-difference h2 {
+.expenses__summary-difference > h2 {
     order: 2;
 }
 
-.expenses__summary-difference span {
-    font-weight: 700;
-}
-
 /*  */
+
 .put-right {
     margin-left: auto;
 }
 
-.gap-1 {
-    gap: 1rem;
+
+.bg-soft-red {
+    background-color: var(--color-primary-soft-red);
 }
 
 .bg-cyan {
     background-color: var(--color-primary-cyan);
 }
 
-.bg-soft-red {
-    background-color: var(--color-primary-soft-red);
+.text-fs-big {
+    font-size: 1.6rem;
+}
+
+.text-fs-bigger {
+    font-size: 1.8rem;
+}
+
+.text-fs-regular {
+    font-size: 1rem;
+}
+
+.text-fw-bold {
+    font-weight: 700;
+}
+
+.text-fw-regular {
+    font-weight: 400;
 }
