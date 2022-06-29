@@ -1,0 +1,160 @@
+@font-face {
+    font-family: DM Sans;
+    src: url(../fonts/DMSans-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: DM Sans;
+    src: url(../fonts/DMSans-Bold.ttf);
+    font-weight: 700;
+}
+
+.attribution { font-size: 11px; text-align: center; padding: 1rem}
+.attribution a { color: hsl(228, 45%, 44%); }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary-soft-red: hsl(10, 79%, 65%);
+    --color-primary-cyan: hsl(186, 34%, 60%);
+    --color-neutral-dark-brown: hsl(25, 47%, 15%);
+    --color-neutral-medium-brown: hsl(28, 10%, 53%);
+    --color-neutral-cream: hsl(27, 66%, 92%);
+    --color-neutral-very-pale-orange: hsl(33, 100%, 98%);
+
+    font-size: 18px;
+    font-family: DM Sans, sans-serif;
+}
+
+body {
+    background-color: var(--color-neutral-cream);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    max-width: 25rem;
+    min-width: 15rem;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 2rem;
+    width: 3rem;
+    background-image: url(../images/logo.svg);
+    background-size: cover;
+}
+
+.card {
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+
+.balance__card {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-primary-soft-red);
+    color: var(--color-neutral-very-pale-orange);
+}
+
+.balance__total h1 {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.balance__total > span {
+    font-weight: 700;
+    font-size: 
+}
+
+.expenses__card {
+    background-color: var(--color-neutral-very-pale-orange);
+    color: var(--color-neutral-dark-brown);
+    display: flex;
+    flex-direction: column;
+    gap: inherit;
+}
+
+.expenses__card hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--color-primary-soft-red);
+}
+
+.expenses__chart {
+    height: 8rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: .5rem;
+    margin-block: 2rem;
+}
+
+.chart__bar {
+    width: 100%;
+    border-radius: .2rem;
+    position: relative;
+}
+
+.chart__bar > span {
+    position: absolute;
+    bottom: -1.5rem;
+    font-size: .8rem;
+    color: var(--color-neutral-medium-brown);
+}
+
+.expenses__summary {
+    display: flex;
+    align-items: center;
+}
+
+.expenses__summary h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-neutral-medium-brown)
+}
+
+.expenses__summary-total > span {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.expenses__summary-difference {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    align-self: flex-end;
+}
+
+.expenses__summary-difference h2 {
+    order: 2;
+}
+
+.expenses__summary-difference span {
+    font-weight: 700;
+}
+
+/*  */
+.put-right {
+    margin-left: auto;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.bg-cyan {
+    background-color: var(--color-primary-cyan);
+}
+
+.bg-soft-red {
+    background-color: var(--color-primary-soft-red);
+}
